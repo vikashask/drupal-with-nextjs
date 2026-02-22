@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  distDir: "dist",
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -25,10 +23,6 @@ const nextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
-  },
-  // Enable ISR
-  experimental: {
-    // Enable partial prerendering for better performance
   },
 };
 
