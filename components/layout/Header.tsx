@@ -3,15 +3,18 @@ import Link from 'next/link';
 
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Fresh & Healthy';
 
-const navigation = [
+const mainNav = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
   { name: 'About', href: '/page/about' },
-  { name: 'SSR Demo', href: '/demo/ssr' },
-  { name: 'ISR Demo', href: '/demo/isr' },
-  { name: 'CSR Demo', href: '/demo/csr' },
+];
+
+const demoNav = [
+  { name: 'SSR', href: '/demo/ssr' },
+  { name: 'ISR', href: '/demo/isr' },
+  { name: 'CSR', href: '/demo/csr' },
   { name: 'Comparison', href: '/demo/comparison' },
-  { name: 'Manager Demo', href: '/demo/manager' },
+  { name: 'Manager', href: '/demo/manager' },
 ];
 
 /**
@@ -24,14 +27,15 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-primary-600 font-heading">
+            <span className="text-xl font-bold text-primary-600 font-heading">
               {siteName}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6">
-            {navigation.map((item) => (
+          <nav className="hidden md:flex items-center space-x-4">
+            {/* Main Links */}
+            {mainNav.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -40,6 +44,27 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+
+            {/* Demos Dropdown */}
+            <div className="relative group">
+              <button className="text-gray-600 hover:text-primary-600 font-medium transition-colors text-sm flex items-center gap-1">
+                Demos
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {demoNav.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-600 first:rounded-t-md last:rounded-b-md"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
