@@ -30,251 +30,284 @@ export default function ComparisonPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="bg-white rounded-lg shadow-xl p-8 mb-8">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4 text-center">
-            🎯 SSR vs ISR vs CSR Comparison
-          </h1>
-          <p className="text-center text-gray-600 text-lg mb-8">
-            Side-by-side comparison of all three rendering methods in Next.js
-          </p>
+    <div className="min-h-screen bg-[#0a0a1a] relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] rounded-full bg-indigo-600/10 blur-[100px]" />
+        <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full bg-purple-600/10 blur-[100px]" />
+      </div>
 
-          <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
-            <h3 className="font-bold text-blue-800 mb-2">📋 How to Use This Comparison:</h3>
-            <ol className="list-decimal list-inside space-y-2 text-gray-700">
-              <li>Open each demo page in separate browser tabs</li>
-              <li>Refresh all tabs at the same time and compare timestamps</li>
-              <li>Notice how SSR changes immediately, ISR stays cached, and CSR shows loading</li>
-              <li>For ISR: Wait 30+ seconds and refresh to see the update</li>
+      <div className="relative z-10 p-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-sm text-orange-300 mb-6">
+              <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+              Live Comparison
+            </div>
+            <h1 className="text-5xl font-extrabold text-white mb-4">
+              SSR vs ISR vs CSR
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Side-by-side comparison with live demos and verifiable testing
+            </p>
+          </div>
+
+          {/* How to use */}
+          <div className="bg-blue-500/10 rounded-2xl p-6 mb-10 border border-blue-500/20 animate-fade-in-up delay-100" style={{ animationFillMode: 'backwards' }}>
+            <h3 className="font-bold text-blue-300 mb-3 flex items-center gap-2">
+              <span className="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center text-xs">📋</span>
+              How to Use This Comparison
+            </h3>
+            <ol className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-300">
+              <li className="flex items-center gap-2"><span className="text-blue-400 font-bold">1.</span>Open each demo in separate browser tabs</li>
+              <li className="flex items-center gap-2"><span className="text-blue-400 font-bold">2.</span>Refresh all tabs simultaneously</li>
+              <li className="flex items-center gap-2"><span className="text-blue-400 font-bold">3.</span>SSR changes instantly, ISR stays cached, CSR shows loading</li>
+              <li className="flex items-center gap-2"><span className="text-blue-400 font-bold">4.</span>For ISR: Wait 30s and refresh to see the update</li>
             </ol>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <div className="bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg p-6 text-white shadow-lg">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold">SSR</h2>
-                <span className="text-3xl">🔄</span>
+          {/* Three Demo Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12 animate-fade-in-up delay-200" style={{ animationFillMode: 'backwards' }}>
+            {/* SSR */}
+            <div className="bg-white/[0.04] backdrop-blur rounded-2xl p-6 border border-indigo-500/20 hover:border-indigo-500/40 transition-all group">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-xl">🔄</span>
+                  <h2 className="text-2xl font-bold text-white">SSR</h2>
+                </div>
+                <span className="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 text-xs font-medium">DYNAMIC</span>
               </div>
-              <div className="space-y-3 text-sm mb-6">
-                <div className="flex items-start gap-2">
-                  <span className="text-green-300">✓</span>
-                  <span>Always fresh data</span>
+              <div className="space-y-2.5 text-sm mb-6">
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-[10px]">✓</span>
+                  Always fresh data
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-green-300">✓</span>
-                  <span>Great SEO</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-[10px]">✓</span>
+                  Great SEO
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-red-300">✗</span>
-                  <span>Slower response</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-[10px]">✗</span>
+                  Slower response
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-red-300">✗</span>
-                  <span>High server load</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-[10px]">✗</span>
+                  High server load
                 </div>
               </div>
               <a
                 href="/demo/ssr"
                 target="_blank"
-                className="block w-full text-center bg-white text-indigo-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition"
+                className="block w-full text-center bg-indigo-500/20 text-indigo-300 font-semibold py-3 rounded-xl hover:bg-indigo-500/30 transition border border-indigo-500/20"
               >
                 Open SSR Demo →
               </a>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg p-6 text-white shadow-lg">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold">ISR</h2>
-                <span className="text-3xl">⚡</span>
+            {/* ISR */}
+            <div className="bg-white/[0.04] backdrop-blur rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all group">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-xl">⚡</span>
+                  <h2 className="text-2xl font-bold text-white">ISR</h2>
+                </div>
+                <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-xs font-medium">CACHED</span>
               </div>
-              <div className="space-y-3 text-sm mb-6">
-                <div className="flex items-start gap-2">
-                  <span className="text-green-300">✓</span>
-                  <span>Super fast (cached)</span>
+              <div className="space-y-2.5 text-sm mb-6">
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-[10px]">✓</span>
+                  Super fast (cached)
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-green-300">✓</span>
-                  <span>Low server load</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-[10px]">✓</span>
+                  Low server load
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-yellow-300">~</span>
-                  <span>Periodic updates</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 text-[10px]">~</span>
+                  Periodic updates
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-red-300">✗</span>
-                  <span>Can be stale</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-[10px]">✗</span>
+                  Can be stale
                 </div>
               </div>
               <a
                 href="/demo/isr"
                 target="_blank"
-                className="block w-full text-center bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition"
+                className="block w-full text-center bg-purple-500/20 text-purple-300 font-semibold py-3 rounded-xl hover:bg-purple-500/30 transition border border-purple-500/20"
               >
                 Open ISR Demo →
               </a>
             </div>
 
-            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg p-6 text-white shadow-lg">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold">CSR</h2>
-                <span className="text-3xl">💻</span>
+            {/* CSR */}
+            <div className="bg-white/[0.04] backdrop-blur rounded-2xl p-6 border border-emerald-500/20 hover:border-emerald-500/40 transition-all group">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-xl">💻</span>
+                  <h2 className="text-2xl font-bold text-white">CSR</h2>
+                </div>
+                <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-xs font-medium">CLIENT</span>
               </div>
-              <div className="space-y-3 text-sm mb-6">
-                <div className="flex items-start gap-2">
-                  <span className="text-green-300">✓</span>
-                  <span>Highly interactive</span>
+              <div className="space-y-2.5 text-sm mb-6">
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-[10px]">✓</span>
+                  Highly interactive
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-green-300">✓</span>
-                  <span>Low server load</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-[10px]">✓</span>
+                  Low server load
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-red-300">✗</span>
-                  <span>Poor SEO</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-[10px]">✗</span>
+                  Poor SEO
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-red-300">✗</span>
-                  <span>Loading states</span>
+                <div className="flex items-center gap-2 text-gray-300">
+                  <span className="w-4 h-4 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-[10px]">✗</span>
+                  Loading states
                 </div>
               </div>
               <a
                 href="/demo/csr"
                 target="_blank"
-                className="block w-full text-center bg-white text-green-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition"
+                className="block w-full text-center bg-emerald-500/20 text-emerald-300 font-semibold py-3 rounded-xl hover:bg-emerald-500/30 transition border border-emerald-500/20"
               >
                 Open CSR Demo →
               </a>
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-lg p-6 mb-8">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">📊 Performance Comparison</h3>
+          {/* Performance Table */}
+          <div className="bg-white/[0.03] backdrop-blur-xl rounded-2xl p-8 mb-10 border border-white/10">
+            <h3 className="text-2xl font-bold text-white mb-6">Performance Comparison</h3>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b-2 border-gray-300">
-                    <th className="text-left py-3 px-4 font-bold">Metric</th>
-                    <th className="text-center py-3 px-4 font-bold text-indigo-600">SSR</th>
-                    <th className="text-center py-3 px-4 font-bold text-purple-600">ISR</th>
-                    <th className="text-center py-3 px-4 font-bold text-green-600">CSR</th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-4 px-4 font-medium text-gray-400 uppercase text-xs tracking-wider">Metric</th>
+                    <th className="text-center py-4 px-4 font-bold text-indigo-400">SSR</th>
+                    <th className="text-center py-4 px-4 font-bold text-purple-400">ISR</th>
+                    <th className="text-center py-4 px-4 font-bold text-emerald-400">CSR</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-3 px-4 font-semibold">Initial Load Speed</td>
-                    <td className="text-center py-3 px-4">🟡 Medium</td>
-                    <td className="text-center py-3 px-4">🟢 Fast</td>
-                    <td className="text-center py-3 px-4">🔴 Slow</td>
+                <tbody className="text-white">
+                  <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                    <td className="py-3.5 px-4 font-medium">Initial Load Speed</td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-yellow-500/15 text-yellow-300 text-xs">Medium</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Fast</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-red-500/15 text-red-300 text-xs">Slow</span></td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-3 px-4 font-semibold">Data Freshness</td>
-                    <td className="text-center py-3 px-4">🟢 Real-time</td>
-                    <td className="text-center py-3 px-4">🟡 Periodic</td>
-                    <td className="text-center py-3 px-4">🟢 Real-time</td>
+                  <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                    <td className="py-3.5 px-4 font-medium">Data Freshness</td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Real-time</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-yellow-500/15 text-yellow-300 text-xs">Periodic</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Real-time</span></td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-3 px-4 font-semibold">Server Load</td>
-                    <td className="text-center py-3 px-4">🔴 High</td>
-                    <td className="text-center py-3 px-4">🟢 Low</td>
-                    <td className="text-center py-3 px-4">🟢 Low</td>
+                  <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                    <td className="py-3.5 px-4 font-medium">Server Load</td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-red-500/15 text-red-300 text-xs">High</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Low</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Low</span></td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-3 px-4 font-semibold">SEO Quality</td>
-                    <td className="text-center py-3 px-4">🟢 Excellent</td>
-                    <td className="text-center py-3 px-4">🟢 Excellent</td>
-                    <td className="text-center py-3 px-4">🔴 Poor</td>
+                  <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                    <td className="py-3.5 px-4 font-medium">SEO Quality</td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Excellent</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Excellent</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-red-500/15 text-red-300 text-xs">Poor</span></td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-3 px-4 font-semibold">Scalability</td>
-                    <td className="text-center py-3 px-4">🔴 Difficult</td>
-                    <td className="text-center py-3 px-4">🟢 Easy</td>
-                    <td className="text-center py-3 px-4">🟢 Easy</td>
+                  <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                    <td className="py-3.5 px-4 font-medium">Scalability</td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-red-500/15 text-red-300 text-xs">Difficult</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Easy</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Easy</span></td>
                   </tr>
-                  <tr className="border-b border-gray-200">
-                    <td className="py-3 px-4 font-semibold">Cost</td>
-                    <td className="text-center py-3 px-4">🔴 High</td>
-                    <td className="text-center py-3 px-4">🟢 Low</td>
-                    <td className="text-center py-3 px-4">🟢 Low</td>
+                  <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                    <td className="py-3.5 px-4 font-medium">Cost</td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-red-500/15 text-red-300 text-xs">High</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Low</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">Low</span></td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-4 font-semibold">Interactivity</td>
-                    <td className="text-center py-3 px-4">🟡 Medium</td>
-                    <td className="text-center py-3 px-4">🟡 Medium</td>
-                    <td className="text-center py-3 px-4">🟢 High</td>
+                  <tr className="hover:bg-white/[0.02] transition-colors">
+                    <td className="py-3.5 px-4 font-medium">Interactivity</td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-yellow-500/15 text-yellow-300 text-xs">Medium</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-yellow-500/15 text-yellow-300 text-xs">Medium</span></td>
+                    <td className="text-center py-3.5 px-4"><span className="px-2.5 py-1 rounded-full bg-green-500/15 text-green-300 text-xs">High</span></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-lg p-6 mb-8">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">🎯 When to Use Each Method</h3>
+          {/* When to use */}
+          <div className="bg-white/[0.03] backdrop-blur-xl rounded-2xl p-8 mb-10 border border-white/10">
+            <h3 className="text-2xl font-bold text-white mb-6">When to Use Each Method</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <h4 className="font-bold text-indigo-600 mb-3">Use SSR for:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• User dashboards</li>
-                  <li>• Shopping carts</li>
-                  <li>• Real-time feeds</li>
-                  <li>• Personalized pages</li>
-                  <li>• Auth-required content</li>
-                  <li>• Stock prices</li>
+              <div className="bg-indigo-500/10 rounded-xl p-5 border border-indigo-500/10">
+                <h4 className="font-bold text-indigo-300 mb-3">SSR</h4>
+                <ul className="space-y-2 text-sm text-gray-300">
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-indigo-400" />User dashboards</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-indigo-400" />Shopping carts</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-indigo-400" />Real-time feeds</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-indigo-400" />Personalized pages</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-indigo-400" />Auth-required content</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-indigo-400" />Stock prices</li>
                 </ul>
               </div>
-              <div>
-                <h4 className="font-bold text-purple-600 mb-3">Use ISR for:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• Blog posts</li>
-                  <li>• Product catalogs</li>
-                  <li>• News articles</li>
-                  <li>• Documentation</li>
-                  <li>• Marketing pages</li>
-                  <li>• Event listings</li>
+              <div className="bg-purple-500/10 rounded-xl p-5 border border-purple-500/10">
+                <h4 className="font-bold text-purple-300 mb-3">ISR</h4>
+                <ul className="space-y-2 text-sm text-gray-300">
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-purple-400" />Blog posts</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-purple-400" />Product catalogs</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-purple-400" />News articles</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-purple-400" />Documentation</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-purple-400" />Marketing pages</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-purple-400" />Event listings</li>
                 </ul>
               </div>
-              <div>
-                <h4 className="font-bold text-green-600 mb-3">Use CSR for:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li>• Admin panels</li>
-                  <li>• Interactive charts</li>
-                  <li>• User settings</li>
-                  <li>• Search results</li>
-                  <li>• Chat interfaces</li>
-                  <li>• Real-time updates</li>
+              <div className="bg-emerald-500/10 rounded-xl p-5 border border-emerald-500/10">
+                <h4 className="font-bold text-emerald-300 mb-3">CSR</h4>
+                <ul className="space-y-2 text-sm text-gray-300">
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-emerald-400" />Admin panels</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-emerald-400" />Interactive charts</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-emerald-400" />User settings</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-emerald-400" />Search results</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-emerald-400" />Chat interfaces</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-emerald-400" />Real-time updates</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">🧪 Live CSR Demo (On This Page)</h3>
-            <p className="text-gray-600 mb-4">
+          {/* Live CSR Demo */}
+          <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl p-8 mb-10 border border-emerald-500/20">
+            <h3 className="text-xl font-bold text-white mb-2">Live CSR Demo (On This Page)</h3>
+            <p className="text-gray-400 text-sm mb-6">
               This section demonstrates CSR in action. Click the button to fetch new data client-side:
             </p>
             
             {csrLoading ? (
               <div className="flex items-center justify-center py-8">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-green-600"></div>
-                <span className="ml-4 text-gray-600">Loading client-side data...</span>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-emerald-500"></div>
+                <span className="ml-4 text-gray-400">Loading client-side data...</span>
               </div>
             ) : csrData ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div className="bg-white rounded-lg p-4 shadow">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="bg-white/[0.05] rounded-xl p-4 border border-white/10">
                   <div className="text-xs text-gray-500 mb-1">Client Timestamp</div>
-                  <div className="font-mono text-sm font-bold text-gray-800 break-all">
+                  <div className="font-mono text-sm font-bold text-white break-all">
                     {csrData.timestamp}
                   </div>
                 </div>
-                <div className="bg-white rounded-lg p-4 shadow">
+                <div className="bg-white/[0.05] rounded-xl p-4 border border-white/10">
                   <div className="text-xs text-gray-500 mb-1">Random Number</div>
-                  <div className="text-3xl font-bold text-gray-800">
+                  <div className="text-3xl font-bold text-emerald-400">
                     {csrData.randomNumber}
                   </div>
                 </div>
-                <div className="bg-white rounded-lg p-4 shadow">
+                <div className="bg-white/[0.05] rounded-xl p-4 border border-white/10">
                   <div className="text-xs text-gray-500 mb-1">Request ID</div>
-                  <div className="font-mono text-sm font-bold text-gray-800">
+                  <div className="font-mono text-sm font-bold text-white">
                     {csrData.requestId}
                   </div>
                 </div>
@@ -283,63 +316,64 @@ export default function ComparisonPage() {
             
             <button
               onClick={handleRefreshCSR}
-              className="w-full md:w-auto px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"
+              className="px-6 py-3 bg-emerald-500/20 text-emerald-300 rounded-xl font-semibold hover:bg-emerald-500/30 transition border border-emerald-500/30"
             >
               🔄 Refetch Data (Client-Side)
             </button>
           </div>
-        </div>
 
-        <div className="bg-white rounded-lg shadow-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">🧪 Testing Instructions</h2>
-          
-          <div className="space-y-6">
-            <div className="bg-indigo-50 border-l-4 border-indigo-600 p-4">
-              <h3 className="font-bold text-indigo-800 mb-2">Test 1: Refresh Speed Test</h3>
-              <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
-                <li>Open SSR, ISR, and CSR demos in separate tabs</li>
-                <li>Refresh all tabs simultaneously (Cmd+R / Ctrl+R)</li>
-                <li>Notice: SSR changes immediately, ISR stays same, CSR shows loading</li>
-              </ol>
-            </div>
+          {/* Testing Instructions */}
+          <div className="bg-white/[0.03] backdrop-blur-xl rounded-2xl p-8 mb-10 border border-white/10">
+            <h2 className="text-2xl font-bold text-white mb-6">Testing Instructions</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-indigo-500/10 rounded-xl p-5 border border-indigo-500/10">
+                <h3 className="font-bold text-indigo-300 mb-3">Test 1: Refresh Speed</h3>
+                <ol className="space-y-1.5 text-sm text-gray-300">
+                  <li className="flex gap-2"><span className="text-indigo-400">1.</span>Open SSR, ISR, CSR in separate tabs</li>
+                  <li className="flex gap-2"><span className="text-indigo-400">2.</span>Refresh all tabs simultaneously</li>
+                  <li className="flex gap-2"><span className="text-indigo-400">3.</span>SSR changes, ISR stays, CSR shows loading</li>
+                </ol>
+              </div>
 
-            <div className="bg-purple-50 border-l-4 border-purple-600 p-4">
-              <h3 className="font-bold text-purple-800 mb-2">Test 2: ISR Revalidation Test</h3>
-              <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
-                <li>Open ISR demo and note the timestamp</li>
-                <li>Refresh 5 times quickly - timestamp stays the same</li>
-                <li>Wait 30+ seconds</li>
-                <li>Refresh again - timestamp updates!</li>
-              </ol>
-            </div>
+              <div className="bg-purple-500/10 rounded-xl p-5 border border-purple-500/10">
+                <h3 className="font-bold text-purple-300 mb-3">Test 2: ISR Revalidation</h3>
+                <ol className="space-y-1.5 text-sm text-gray-300">
+                  <li className="flex gap-2"><span className="text-purple-400">1.</span>Open ISR demo, note timestamp</li>
+                  <li className="flex gap-2"><span className="text-purple-400">2.</span>Refresh 5x quickly → same timestamp</li>
+                  <li className="flex gap-2"><span className="text-purple-400">3.</span>Wait 30s, refresh → timestamp updates</li>
+                </ol>
+              </div>
 
-            <div className="bg-green-50 border-l-4 border-green-600 p-4">
-              <h3 className="font-bold text-green-800 mb-2">Test 3: SEO Test</h3>
-              <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
-                <li>Right-click on each demo page → "View Page Source"</li>
-                <li>SSR & ISR: Data is in HTML (good for SEO)</li>
-                <li>CSR: No data in HTML, just loading state (bad for SEO)</li>
-              </ol>
-            </div>
+              <div className="bg-green-500/10 rounded-xl p-5 border border-green-500/10">
+                <h3 className="font-bold text-green-300 mb-3">Test 3: SEO Verification</h3>
+                <ol className="space-y-1.5 text-sm text-gray-300">
+                  <li className="flex gap-2"><span className="text-green-400">1.</span>Right-click → &ldquo;View Page Source&rdquo;</li>
+                  <li className="flex gap-2"><span className="text-green-400">2.</span>SSR & ISR: Data is in HTML (SEO-friendly)</li>
+                  <li className="flex gap-2"><span className="text-green-400">3.</span>CSR: No data in HTML (bad for SEO)</li>
+                </ol>
+              </div>
 
-            <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4">
-              <h3 className="font-bold text-yellow-800 mb-2">Test 4: Network Tab Test</h3>
-              <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
-                <li>Open DevTools → Network tab</li>
-                <li>SSR & ISR: No XHR requests for data (server-rendered)</li>
-                <li>CSR: XHR/Fetch request visible (client-side fetch)</li>
-              </ol>
+              <div className="bg-amber-500/10 rounded-xl p-5 border border-amber-500/10">
+                <h3 className="font-bold text-amber-300 mb-3">Test 4: Network Tab</h3>
+                <ol className="space-y-1.5 text-sm text-gray-300">
+                  <li className="flex gap-2"><span className="text-amber-400">1.</span>Open DevTools → Network tab</li>
+                  <li className="flex gap-2"><span className="text-amber-400">2.</span>SSR & ISR: No XHR data requests</li>
+                  <li className="flex gap-2"><span className="text-amber-400">3.</span>CSR: XHR/Fetch request visible</li>
+                </ol>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-8 text-center">
-          <a
-            href="/"
-            className="inline-block px-8 py-4 bg-gray-800 text-white rounded-lg font-semibold hover:bg-gray-900 transition shadow-lg"
-          >
-            ← Back to Home
-          </a>
+          {/* Back */}
+          <div className="text-center">
+            <a
+              href="/demo"
+              className="inline-block px-8 py-4 bg-white/10 backdrop-blur text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 hover:border-white/40"
+            >
+              ← Back to Demo Hub
+            </a>
+          </div>
         </div>
       </div>
     </div>

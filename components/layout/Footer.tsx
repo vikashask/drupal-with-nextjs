@@ -1,5 +1,8 @@
+"use client";
+
 import { Container } from '@/components/common';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Fresh & Healthy';
 const siteSlogan = process.env.NEXT_PUBLIC_SITE_SLOGAN || 'Plant Based, Gluten Free, Made Fresh Daily';
@@ -26,6 +29,12 @@ const footerLinks = {
  * Site footer component
  */
 export function Footer() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith('/demo')) {
+    return null;
+  }
+
   const currentYear = new Date().getFullYear();
 
   return (
